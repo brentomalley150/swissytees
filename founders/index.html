@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Swissy Tees — Founders Hub</title>
+
+<link rel="icon" href="../logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --navy: #1f2a44;
+    --navy-deep: #16203a;
+    --red: #cf4a4f;
+    --red-dark: #b23a40;
+    --rust: #c47a3c;
+    --rust-dark: #9c5a28;
+    --cream: #f5f0e6;
+    --cream-2: #efe7d7;
+    --white: #ffffff;
+    --ink: #243049;
+    --muted: #6a7390;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: radial-gradient(1200px 700px at 50% -10%, var(--cream) 0%, var(--cream-2) 55%, #e7dcc8 100%);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ---------- Password gate ---------- */
+  #gate {
+    position: fixed; inset: 0; z-index: 100;
+    background: radial-gradient(900px 600px at 50% 20%, #243353, var(--navy-deep));
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .gate-card {
+    background: var(--white); border-radius: 20px; padding: 36px 32px;
+    max-width: 380px; width: 100%; text-align: center;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+  }
+  .gate-card img { width: 96px; height: 96px; border-radius: 50%; object-fit: contain; }
+  .gate-card h1 { font-family:'Poppins'; font-size: 22px; color: var(--navy); margin: 14px 0 4px; }
+  .gate-card p { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+  .gate-card input {
+    width: 100%; font-size: 16px; padding: 13px 14px; border: 2px solid #d8cdb7;
+    border-radius: 12px; outline: none; text-align: center; font-family: 'Nunito';
+  }
+  .gate-card input:focus { border-color: var(--red); box-shadow: 0 0 0 4px rgba(207,74,79,0.12); }
+  .gate-card button {
+    width: 100%; margin-top: 12px; font-family:'Poppins'; font-weight: 700; font-size: 16px;
+    padding: 13px; border: none; border-radius: 12px; background: var(--navy); color:#fff; cursor: pointer;
+  }
+  .gate-card button:hover { background: var(--navy-deep); }
+  .gate-err { color: var(--red-dark); font-weight: 700; font-size: 14px; margin-top: 12px; min-height: 18px; }
+
+  /* ---------- App ---------- */
+  #app { display: none; }
+  header.top {
+    background: var(--navy); color: #fff; padding: 20px 24px;
+    display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 10;
+    box-shadow: 0 4px 18px rgba(31,42,68,0.25);
+  }
+  header.top img { width: 52px; height: 52px; border-radius: 50%; object-fit: contain; background:#fff; }
+  header.top .titles h1 { font-family:'Poppins'; font-size: 20px; font-weight: 800; line-height: 1.1; }
+  header.top .titles span { font-size: 13px; color: #b9c2d8; }
+  header.top .lock { margin-left: auto; }
+  header.top .lock button {
+    font-family:'Poppins'; font-weight:600; font-size:13px; color:#fff; background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 7px 14px; cursor: pointer;
+  }
+  header.top .lock button:hover { background: rgba(255,255,255,0.22); }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 28px 22px 64px; }
+
+  .hero {
+    background: linear-gradient(135deg, #2a3a5e, var(--navy)); color: #fff;
+    border-radius: 20px; padding: 26px 28px; margin-bottom: 26px;
+  }
+  .hero h2 { font-family:'Poppins'; font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+  .hero p { color: #cdd5e8; font-size: 15.5px; }
+  .hero .pill { display:inline-block; background: var(--red); color:#fff; font-family:'Poppins'; font-weight:700;
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 14px; margin-bottom: 26px; }
+  .stat { background:#fff; border:1px solid #ece2cf; border-radius: 16px; padding: 16px 18px; }
+  .stat .n { font-family:'Poppins'; font-weight:800; font-size: 24px; color: var(--navy); }
+  .stat .l { font-size: 13px; color: var(--muted); }
+
+  .card {
+    background:#fff; border:1px solid #ece2cf; border-radius: 18px; padding: 24px 26px; margin-bottom: 22px;
+    box-shadow: 0 8px 26px rgba(31,42,68,0.06);
+  }
+  .card > h3 {
+    font-family:'Poppins'; font-size: 19px; color: var(--navy); margin-bottom: 14px;
+    display:flex; align-items:center; gap: 10px;
+  }
+  .card > h3 .emoji { font-size: 22px; }
+  .card p { margin-bottom: 12px; }
+  .card p:last-child { margin-bottom: 0; }
+  .lead { color: var(--rust-dark); font-weight: 700; }
+
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 14px; font-size: 15px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #eee4d2; }
+  th { font-family:'Poppins'; color: var(--navy); font-size: 13px; text-transform: uppercase; letter-spacing: .5px; }
+  td.num { font-family:'Poppins'; font-weight: 700; color: var(--navy); }
+
+  .design { border-left: 4px solid var(--rust); padding: 6px 0 6px 16px; margin-bottom: 16px; }
+  .design h4 { font-family:'Poppins'; font-size: 16px; color: var(--navy); }
+  .design .aud { font-size: 13px; color: var(--red-dark); font-weight:700; margin-bottom: 4px; }
+  .design p { font-size: 14.5px; margin: 0; color: #45506a; }
+
+  .money-split { display:flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 4px; }
+  .chip { flex:1 1 150px; border-radius: 14px; padding: 14px 16px; color:#fff; }
+  .chip.print { background: #7a8aa8; }
+  .chip.fee { background: var(--rust); }
+  .chip.profit { background: var(--navy); }
+  .chip .amt { font-family:'Poppins'; font-weight:800; font-size: 22px; }
+  .chip .lab { font-size: 13px; opacity: .92; }
+
+  /* Checklist */
+  .check-item { display:flex; align-items:flex-start; gap: 12px; padding: 11px 0; border-bottom: 1px dashed #e6dcc7; }
+  .check-item:last-child { border-bottom: none; }
+  .check-item input { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--red); cursor: pointer; flex: none; }
+  .check-item label { font-size: 15.5px; cursor: pointer; }
+  .check-item input:checked + label { color: var(--muted); text-decoration: line-through; }
+  .progress-wrap { background:#eee4d2; border-radius: 999px; height: 12px; overflow: hidden; margin: 4px 0 16px; }
+  .progress-bar { height: 100%; background: linear-gradient(90deg, var(--rust), var(--red)); width: 0%; transition: width .3s; }
+
+  .docs a {
+    display:flex; align-items:center; gap:10px; text-decoration:none; color: var(--navy); font-weight:600;
+    padding: 12px 14px; border:1px solid #ece2cf; border-radius: 12px; margin-bottom: 10px; background:#fffdf9;
+  }
+  .docs a:hover { border-color: var(--red); background:#fff; }
+
+  footer.foot { text-align:center; color: var(--muted); font-size: 13px; padding: 8px 0 0; }
+  .note { font-size: 13px; color: var(--muted); background:#fbf4e6; border:1px solid #efe2c8; border-radius: 12px; padding: 12px 14px; }
+</style>
+</head>
+<body>
+
+<!-- ============ PASSWORD GATE ============ -->
+<div id="gate">
+  <div class="gate-card">
+    <img src="../logo.jpg" alt="Swissy Tees" onerror="this.style.display='none'" />
+    <h1>Founders Hub</h1>
+    <p>Private — Swissy Tees founders only.</p>
+    <input id="pw" type="password" placeholder="Enter password" autocomplete="off" />
+    <button onclick="tryUnlock()">Unlock 🐾</button>
+    <div class="gate-err" id="err"></div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app">
+  <header class="top">
+    <img src="../logo.jpg" alt="Swissy Tees" onerror="this.style.display='none'" />
+    <div class="titles">
+      <h1>Swissy Tees · Founders Hub</h1>
+      <span>Declan &amp; Heinz · Evergreen, CO 🏔️</span>
+    </div>
+    <div class="lock"><button onclick="lockAgain()">Lock</button></div>
+  </header>
+
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="pill">The Big Idea</span>
+      <h2>We sell shirts with zero risk.</h2>
+      <p>Print-on-demand means a partner only prints &amp; ships a shirt <strong>after</strong> a customer
+      pays. No buying shirts ahead of time, no inventory, no shipping ourselves. Declan focuses on
+      designs and the brand — the printer does the rest. About <strong>half of every sale is profit</strong>.</p>
+    </div>
+
+    <div class="grid">
+      <div class="stat"><div class="n">$0</div><div class="l">Upfront cost for shirts</div></div>
+      <div class="stat"><div class="n">$28</div><div class="l">Target sell price per tee</div></div>
+      <div class="stat"><div class="n">~$14</div><div class="l">Profit per shirt</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">First goal (sales)</div></div>
+    </div>
+
+    <!-- STORE SETUP -->
+    <div class="card">
+      <h3><span class="emoji">🏪</span> Store Setup Plan</h3>
+      <p><strong>Step 1 — Print partner.</strong> Start with <strong>Printful</strong> (owns its own
+      print shops → consistent quality, which fits our premium brand). Printify is a few dollars
+      cheaper but quality varies — a good "add later" option. Recommended blank: the soft
+      <strong>Bella+Canvas 3001</strong> tee.</p>
+
+      <table>
+        <tr><th></th><th>Printful</th><th>Printify</th></tr>
+        <tr><td>Base cost (quality tee)</td><td class="num">~$12–13</td><td class="num">~$8–11</td></tr>
+        <tr><td>Quality control</td><td>Owns print shops</td><td>Outside printers (varies)</td></tr>
+        <tr><td>Best for</td><td>Quality &amp; ease</td><td>Wider margins later</td></tr>
+      </table>
+
+      <p><strong>Step 2 — Where customers check out.</strong> Launch on <strong>Etsy first</strong>
+      (no monthly fee, brings its own dog-and-gift shoppers, fast first sale) while setting up
+      <strong>Shopify on swissytees.com</strong> in parallel as the real flagship. Many small
+      brands run both — Etsy for discovery, your own site for brand &amp; repeat buyers.</p>
+
+      <p><strong>Step 3 — Connect the dots.</strong> Create Printful → upload designs onto the tee →
+      connect to Etsy/Shopify → set prices → publish 3–5 starter products → order <strong>1 sample</strong>
+      to check quality and photograph (with Heinz!) → flip swissytees.com to the live store → email
+      the launch list with a discount code.</p>
+    </div>
+
+    <!-- DESIGNS -->
+    <div class="card">
+      <h3><span class="emoji">🎨</span> First Drop — 5 Designs</h3>
+      <p class="lead">Start with 3–5 strong designs, not 30. A tight first drop beats a cluttered shop.</p>
+
+      <div class="design">
+        <div class="aud">Widest audience · most buyers search "Bernese"</div>
+        <h4>1. The Hero Bernese Tee</h4>
+        <p>Clean, friendly illustrated Bernese (fluffy tricolor), art-forward, minimal text. The flagship.</p>
+      </div>
+      <div class="design">
+        <div class="aud">Funny &amp; shareable on social</div>
+        <h4>2. "Owned by a Swissy"</h4>
+        <p>Bold text design with a small paw print or dog silhouette. Easy gift, travels on TikTok/Instagram.</p>
+      </div>
+      <div class="design">
+        <div class="aud">Brand story · the winner</div>
+        <h4>3. Heinz / Evergreen Alpine Badge</h4>
+        <p>The logo as a wearable — dog on a mountain overlook, "Evergreen, Colorado" in the ring. A nod to Heinz.</p>
+      </div>
+      <div class="design">
+        <div class="aud">Broadens to general buyers</div>
+        <h4>4. "Big Dogs. Bigger Hearts."</h4>
+        <p>The tagline in a warm, clean layout with a small Swiss-cross or paw accent. Wearable even by non-owners.</p>
+      </div>
+      <div class="design">
+        <div class="aud">Give-back &amp; loyalty</div>
+        <h4>5. The Rescue Tee</h4>
+        <p>"$X from every shirt supports Swiss Mountain Dog rescue." Pick one rescue and name it.</p>
+      </div>
+
+      <p class="note">Keep it on-brand: badge palette (navy, rust/tan, white, Swiss red), clean breed-accurate
+      art, dog is the hero. Offer each on cream, white, and heather navy.</p>
+    </div>
+
+    <!-- PRICING -->
+    <div class="card">
+      <h3><span class="emoji">💰</span> Pricing &amp; Money Plan</h3>
+      <p>Sell at <strong>$28</strong> — right in the pocket for a premium dog tee (rivals sell $26–34),
+      and positioned as quality, not bargain-bin. Customers pay shipping, so it doesn't eat profit.</p>
+
+      <p style="font-weight:700; color:var(--navy); font-family:'Poppins';">Where each $28 goes:</p>
+      <div class="money-split">
+        <div class="chip print"><div class="amt">$13</div><div class="lab">Printer makes &amp; ships it</div></div>
+        <div class="chip fee"><div class="amt">$1</div><div class="lab">Card / checkout fee</div></div>
+        <div class="chip profit"><div class="amt">$14</div><div class="lab">Declan's profit 🎉</div></div>
+      </div>
+
+      <p style="margin-top:14px;"><strong>Startup cost: about $20–30 total</strong> — one sample shirt (~$15)
+      plus a few Etsy listings (~$0.20 each). Shirts themselves cost $0 because of print-on-demand.</p>
+      <p><strong>First goal:</strong> sell <strong>10 shirts ≈ $140 profit</strong>, plus real photos and first
+      reviews. Then reinvest a little into the next sample and a small social push. Small, real, repeatable.</p>
+    </div>
+
+    <!-- CHECKLIST -->
+    <div class="card">
+      <h3><span class="emoji">✅</span> Launch Checklist</h3>
+      <div class="progress-wrap"><div class="progress-bar" id="bar"></div></div>
+      <div id="checklist">
+        <div class="check-item"><input type="checkbox" id="c1"><label for="c1">Confirm swissytees.com shows the new page + HTTPS is on</label></div>
+        <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Create Printful account</label></div>
+        <div class="check-item"><input type="checkbox" id="c3"><label for="c3">Design #1 (Hero Bernese Tee) uploaded to a Bella+Canvas 3001</label></div>
+        <div class="check-item"><input type="checkbox" id="c4"><label for="c4">Order 1 sample shirt to check quality</label></div>
+        <div class="check-item"><input type="checkbox" id="c5"><label for="c5">Photograph the sample (with Heinz 🐕)</label></div>
+        <div class="check-item"><input type="checkbox" id="c6"><label for="c6">Set up Etsy shop &amp; connect Printful</label></div>
+        <div class="check-item"><input type="checkbox" id="c7"><label for="c7">Publish 3 starter designs at $28</label></div>
+        <div class="check-item"><input type="checkbox" id="c8"><label for="c8">Set up Shopify on swissytees.com (flagship)</label></div>
+        <div class="check-item"><input type="checkbox" id="c9"><label for="c9">Launch-day email to sign-up list with a discount code</label></div>
+        <div class="check-item"><input type="checkbox" id="c10"><label for="c10">First 10 sales 🎯</label></div>
+      </div>
+    </div>
+
+    <!-- DOCS -->
+    <div class="card docs">
+      <h3><span class="emoji">📂</span> Founder Documents</h3>
+      <a href="https://github.com/brentomalley150/swissytees/blob/main/Swissytees-Launch-Playbook.md" target="_blank">📘 Launch Playbook (full)</a>
+      <a href="https://github.com/brentomalley150/swissytees/blob/main/Swissytees-Brand-Foundation.md" target="_blank">🎯 Brand Foundation</a>
+      <a href="https://github.com/brentomalley150/swissytees" target="_blank">💻 GitHub Repo</a>
+    </div>
+
+    <footer class="foot">Private founders hub · Swissy Tees · Made with love (and a little dog hair) 🐾</footer>
+  </div>
+</div>
+
+<script>
+  // ---------- Light password gate (NOT real security — see note to Brent) ----------
+  // Change this to whatever you and Declan want:
+  const PASSWORD = "heinz2026";
+
+  function showApp() {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+  }
+  function tryUnlock() {
+    const val = document.getElementById('pw').value;
+    if (val === PASSWORD) {
+      sessionStorage.setItem('swissy_unlocked', '1');
+      showApp();
+    } else {
+      document.getElementById('err').textContent = "Nope — try again 🐾";
+      document.getElementById('pw').value = '';
+      document.getElementById('pw').focus();
+    }
+  }
+  function lockAgain() {
+    sessionStorage.removeItem('swissy_unlocked');
+    location.reload();
+  }
+  document.getElementById('pw').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') tryUnlock();
+  });
+  if (sessionStorage.getItem('swissy_unlocked') === '1') showApp();
+
+  // ---------- Checklist persistence + progress ----------
+  const boxes = Array.from(document.querySelectorAll('#checklist input'));
+  function updateProgress() {
+    const done = boxes.filter(b => b.checked).length;
+    document.getElementById('bar').style.width = (done / boxes.length * 100) + '%';
+  }
+  boxes.forEach(b => {
+    const saved = localStorage.getItem('swissy_' + b.id);
+    if (saved === '1') b.checked = true;
+    b.addEventListener('change', () => {
+      localStorage.setItem('swissy_' + b.id, b.checked ? '1' : '0');
+      updateProgress();
+    });
+  });
+  updateProgress();
+</script>
+</body>
+</html>
