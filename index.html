@@ -94,6 +94,13 @@
     text-align:center; line-height:1.1; margin-bottom: 22px; }
 
   .founders { background: var(--white); }
+  .team-photo {
+    display:block; max-width: 360px; width: 100%; margin: 0 auto 26px;
+    border-radius: 20px; border: 5px solid #fff;
+    box-shadow: 0 16px 44px rgba(31,42,68,0.20);
+  }
+  .photo-cap { text-align:center; font-family:'Poppins'; font-weight:600; font-size:13px;
+    color: var(--muted); margin: -16px 0 26px; }
   .meet {
     display:grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px;
   }
@@ -165,6 +172,9 @@
     <div class="container">
       <div class="section-label">Meet the Team</div>
       <h2>Declan &amp; Heinz</h2>
+      <img class="team-photo" src="declan-heinz.jpg" alt="Declan and his Greater Swiss Mountain Dog Heinz in Evergreen, Colorado"
+           onerror="this.style.display='none';var c=document.getElementById('photoCap');if(c)c.style.display='none';" />
+      <div class="photo-cap" id="photoCap">Declan &amp; Heinz · Evergreen, Colorado 🏔️</div>
       <div class="meet">
         <div class="who declan">
           <div class="avatar">🧒</div>
