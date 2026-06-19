@@ -17,11 +17,11 @@ four Swiss Mountain Dog breeds (Bernese, Greater Swiss, Appenzeller, and Entlebu
 | File | Purpose |
 |------|---------|
 | `index.html` | The "Launching Soon" landing page (single-file, no dependencies) |
-| `logo.png` | Brand badge logo — **add this file** (used by the landing page + favicon) |
+| `logo.jpg` | Brand badge logo — **add this file** (used by the landing page + favicon) |
 | `Swissytees-Brand-Foundation.md` | Brand strategy: positioning, voice, palette, product ideas |
 | `.gitignore` | Standard ignores |
 
-> **Note:** Save the brand logo image into this folder as `logo.png`. The landing
+> **Note:** Save the brand logo image into this folder as `logo.jpg`. The landing
 > page shows a fallback ring until it's present.
 
 ---
