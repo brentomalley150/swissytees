@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Swissy Tees — Mountain Apparel | Launching Soon</title>
-<meta name="description" content="Swissy Tees — premium apparel for people who love Swiss Mountain Dogs. Big dogs. Bigger hearts. Launching soon." />
+<title>Swissy Tees — Mountain Apparel | Big Dogs. Bigger Hearts.</title>
+<meta name="description" content="Swissy Tees — premium apparel for people who love Swiss Mountain Dogs. Founded by Declan, a 10-year-old in Evergreen, Colorado, and his Greater Swiss Mountain Dog, Heinz. Big dogs. Bigger hearts." />
 
-<!-- Social share preview -->
 <meta property="og:title" content="Swissy Tees — Mountain Apparel" />
-<meta property="og:description" content="Premium apparel for people who love Swiss Mountain Dogs. Big dogs. Bigger hearts. Launching soon." />
+<meta property="og:description" content="Premium apparel for Swiss Mountain Dog lovers. Founded by a 10-year-old and his big, drooly, cuddly Swissy named Heinz. Big dogs. Bigger hearts." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://swissytees.com/" />
 <meta property="og:image" content="https://swissytees.com/logo.jpg" />
@@ -21,310 +20,256 @@
 
 <style>
   :root {
-    --navy: #1f2a44;        /* badge text */
+    --navy: #1f2a44;
     --navy-deep: #16203a;
-    --red: #cf4a4f;         /* outer ring / Swiss accent */
+    --red: #cf4a4f;
     --red-dark: #b23a40;
-    --rust: #c47a3c;        /* dog rust markings */
+    --rust: #c47a3c;
     --rust-dark: #9c5a28;
-    --cream: #f5f0e6;       /* cozy background */
+    --cream: #f5f0e6;
     --cream-2: #efe7d7;
     --white: #ffffff;
     --ink: #243049;
+    --muted: #6a7390;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: 'Nunito', system-ui, -apple-system, sans-serif;
     color: var(--ink);
-    background:
-      radial-gradient(1200px 600px at 50% -10%, var(--cream) 0%, var(--cream-2) 60%, #e7dcc8 100%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: var(--cream);
+    line-height: 1.65;
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 22px; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: radial-gradient(1000px 600px at 50% -5%, var(--cream) 0%, var(--cream-2) 55%, #e7dcc8 100%);
     text-align: center;
-    padding: 32px 20px 48px;
-    line-height: 1.6;
+    padding: 44px 22px 40px;
   }
-
-  /* faint alpine silhouette band along the bottom */
-  body::after {
-    content: "";
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    height: 160px;
-    background:
-      linear-gradient(to top, rgba(31,42,68,0.07), transparent);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .wrap { position: relative; z-index: 1; width: 100%; max-width: 640px; }
-
   .badge {
-    margin: 8px auto 4px;
-    width: 260px; height: 260px;
-    border-radius: 50%;
-    object-fit: contain;
-    background: var(--white);
+    width: 230px; height: 230px; border-radius: 50%; object-fit: contain; background: #fff;
     box-shadow: 0 18px 50px rgba(31,42,68,0.18), 0 4px 12px rgba(31,42,68,0.10);
-    animation: rise 0.8s ease-out both;
+    animation: rise .8s ease-out both;
   }
-  /* Fallback ring shown only if logo.png is missing */
-  .badge-fallback {
-    margin: 8px auto 4px;
-    width: 260px; height: 260px;
-    border-radius: 50%;
-    background: var(--white);
-    border: 6px solid var(--red);
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 18px 50px rgba(31,42,68,0.18);
-  }
-  .badge-fallback strong { font-family:'Poppins'; color:var(--navy); font-size: 26px; letter-spacing:1px; }
-  .badge-fallback span { font-family:'Poppins'; color:var(--navy); font-size: 13px; letter-spacing:3px; }
-  .badge-fallback .paw { font-size: 56px; }
-
   .eyebrow {
-    display: inline-block;
-    margin-top: 18px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-size: 12px;
-    color: var(--red-dark);
-    background: rgba(207,74,79,0.10);
-    padding: 6px 14px;
-    border-radius: 999px;
+    display:inline-block; margin-top: 20px; font-family:'Poppins'; font-weight:600; letter-spacing:3px;
+    text-transform: uppercase; font-size: 12px; color: var(--red-dark);
+    background: rgba(207,74,79,0.10); padding: 6px 14px; border-radius: 999px;
   }
-
   h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    color: var(--navy);
-    font-size: clamp(34px, 7vw, 56px);
-    line-height: 1.05;
-    margin: 16px 0 6px;
-    animation: rise 0.8s 0.05s ease-out both;
+    font-family:'Poppins'; font-weight: 800; color: var(--navy);
+    font-size: clamp(36px, 8vw, 58px); line-height: 1.04; margin: 16px 0 6px;
+    animation: rise .8s .05s ease-out both;
   }
+  .tagline { font-family:'Poppins'; font-weight:600; font-size: clamp(17px,3.6vw,21px); color: var(--rust-dark); margin-bottom: 16px; }
+  .lede { font-size: 17px; color:#45506a; max-width: 520px; margin: 0 auto 26px; }
 
-  .tagline {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: clamp(16px, 3.4vw, 20px);
-    color: var(--rust-dark);
-    margin-bottom: 18px;
-  }
-
-  .lede {
-    font-size: 17px;
-    color: #45506a;
-    max-width: 500px;
-    margin: 0 auto 28px;
-  }
-
-  /* Email capture */
-  form {
-    display: flex;
-    gap: 10px;
-    max-width: 440px;
-    margin: 0 auto 14px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  /* email form */
+  form { display:flex; gap:10px; max-width: 440px; margin: 0 auto 12px; flex-wrap: wrap; justify-content:center; }
   input[type="email"] {
-    flex: 1 1 240px;
-    min-width: 0;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    padding: 14px 16px;
-    border: 2px solid #d8cdb7;
-    border-radius: 12px;
-    background: var(--white);
-    color: var(--ink);
-    outline: none;
+    flex:1 1 240px; min-width:0; font-family:'Nunito'; font-size:16px; padding:14px 16px;
+    border:2px solid #d8cdb7; border-radius:12px; background:#fff; color:var(--ink); outline:none;
     transition: border-color .15s, box-shadow .15s;
   }
-  input[type="email"]:focus {
-    border-color: var(--red);
-    box-shadow: 0 0 0 4px rgba(207,74,79,0.12);
-  }
+  input[type="email"]:focus { border-color: var(--red); box-shadow: 0 0 0 4px rgba(207,74,79,0.12); }
   button {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    padding: 14px 24px;
-    border: none;
-    border-radius: 12px;
-    background: var(--navy);
-    color: var(--white);
-    cursor: pointer;
-    transition: transform .08s, background .15s, box-shadow .15s;
-    box-shadow: 0 8px 20px rgba(31,42,68,0.22);
+    font-family:'Poppins'; font-weight:700; font-size:16px; padding:14px 24px; border:none; border-radius:12px;
+    background: var(--navy); color:#fff; cursor:pointer; box-shadow: 0 8px 20px rgba(31,42,68,0.22);
+    transition: transform .08s, background .15s;
   }
   button:hover { background: var(--navy-deep); }
   button:active { transform: translateY(1px); }
+  .form-note { font-size:13px; color: var(--muted); }
+  .success { display:none; font-family:'Poppins'; font-weight:600; color: var(--rust-dark);
+    background: rgba(196,122,60,0.12); border-radius:12px; padding:14px 18px; max-width:440px; margin: 6px auto 0; }
 
-  .form-note { font-size: 13px; color: #6a7390; margin-bottom: 8px; }
-  .success {
-    display: none;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    color: var(--rust-dark);
-    background: rgba(196,122,60,0.12);
-    border-radius: 12px;
-    padding: 14px 18px;
-    max-width: 440px;
-    margin: 0 auto;
+  /* ---------- SECTIONS ---------- */
+  section { padding: 46px 0; }
+  .section-label {
+    font-family:'Poppins'; font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    color: var(--red-dark); text-align:center; margin-bottom: 8px;
   }
+  h2 { font-family:'Poppins'; font-weight:800; color: var(--navy); font-size: clamp(26px,5vw,34px);
+    text-align:center; line-height:1.1; margin-bottom: 22px; }
 
-  /* Founder story */
-  .founder {
-    margin: 40px auto 0;
-    max-width: 520px;
-    background: var(--white);
-    border: 1px solid #ece2cf;
-    border-radius: 18px;
-    padding: 26px 28px;
-    box-shadow: 0 10px 30px rgba(31,42,68,0.07);
-    text-align: left;
+  .founders { background: var(--white); }
+  .meet {
+    display:grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px;
   }
-  .founder h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--navy);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  @media (max-width: 560px){ .meet { grid-template-columns: 1fr; } }
+  .who {
+    background: var(--cream); border:1px solid #ece2cf; border-radius: 18px; padding: 24px 24px;
   }
-  .founder h2 .pin {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--white);
-    background: var(--red);
-    padding: 4px 10px;
-    border-radius: 999px;
+  .who .avatar {
+    width: 64px; height: 64px; border-radius: 50%; display:flex; align-items:center; justify-content:center;
+    font-size: 32px; margin-bottom: 12px; background: var(--navy);
   }
-  .founder p { font-size: 15.5px; color: #475068; }
-  .founder p + p { margin-top: 10px; }
-  .founder .sig {
-    margin-top: 14px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    color: var(--navy);
-  }
+  .who.heinz .avatar { background: var(--rust); }
+  .who h3 { font-family:'Poppins'; font-weight:800; color: var(--navy); font-size: 21px; }
+  .who .role { font-family:'Poppins'; font-weight:600; font-size:13px; color: var(--red-dark); text-transform:uppercase; letter-spacing:1px; margin-bottom: 10px; }
+  .who p { font-size: 15.5px; color:#45506a; }
 
-  .socials { margin: 30px 0 6px; }
-  .socials a {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--navy);
-    text-decoration: none;
-    margin: 0 10px;
-    border-bottom: 2px solid transparent;
-    transition: border-color .15s, color .15s;
+  .story {
+    max-width: 600px; margin: 26px auto 0; text-align:center; font-size: 17px; color:#3d4863;
   }
+  .story strong { color: var(--navy); }
+
+  /* promise */
+  .promise { background: linear-gradient(135deg, #2a3a5e, var(--navy)); color:#fff; }
+  .promise h2 { color:#fff; }
+  .promise .grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-top: 6px; }
+  .promise .item { background: rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding: 20px; text-align:center; }
+  .promise .item .ic { font-size: 30px; }
+  .promise .item h4 { font-family:'Poppins'; font-weight:700; font-size:16px; margin: 8px 0 6px; }
+  .promise .item p { font-size: 14px; color:#cdd5e8; }
+
+  /* CTA strip */
+  .cta { background: var(--cream-2); text-align:center; }
+  .cta p { max-width: 520px; margin: 0 auto 22px; font-size: 17px; color:#45506a; }
+
+  /* socials + footer */
+  .socials { margin: 8px 0 4px; text-align:center; }
+  .socials a { font-family:'Poppins'; font-weight:600; font-size:14px; color:var(--navy); text-decoration:none;
+    margin: 0 10px; border-bottom: 2px solid transparent; }
   .socials a:hover { color: var(--red-dark); border-color: var(--red); }
+  footer { background: var(--navy); color:#b9c2d8; text-align:center; padding: 26px 22px; font-size: 13px; }
+  footer .heart { color:#fff; }
 
-  footer {
-    margin-top: 18px;
-    font-size: 13px;
-    color: #7b8298;
-  }
-
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes rise { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <!-- Save your logo file as logo.png in this same folder. If it's missing, the fallback ring shows. -->
-    <img class="badge" src="logo.jpg" alt="Swissy Tees — Mountain Apparel logo"
-         onerror="this.style.display='none';document.getElementById('fallback').style.display='flex';" />
-    <div id="fallback" class="badge-fallback">
-      <span>SWISSY TEES</span>
-      <div class="paw">🐾</div>
-      <span>MOUNTAIN APPAREL</span>
-    </div>
 
-    <div class="eyebrow">Launching Soon</div>
+  <!-- HERO -->
+  <header class="hero">
+    <img class="badge" src="logo.jpg" alt="Swissy Tees — Mountain Apparel logo"
+         onerror="this.style.display='none'" />
+    <div class="eyebrow">Shop Opening Soon</div>
     <h1>Swissy Tees</h1>
     <div class="tagline">Big dogs. Bigger hearts.</div>
     <p class="lede">
       Premium apparel for people who love Swiss Mountain Dogs — soft, well-made tees
-      and merch that celebrate the gentle giants of the Alps. We're putting the
-      finishing touches on our first collection.
+      that celebrate the gentle giants of the Alps. Be first in line when we open.
     </p>
-
     <form id="signup" novalidate>
       <input type="email" id="email" name="email" placeholder="you@email.com" required aria-label="Email address" />
       <button type="submit">Notify me</button>
     </form>
-    <div class="form-note">Be first to know when we launch — plus an early-bird discount. No spam, ever.</div>
+    <div class="form-note">Get our launch news + an early-bird discount. No spam, ever.</div>
     <div class="success" id="success">🐾 You're on the list! We'll bark when we launch.</div>
+  </header>
 
-    <section class="founder">
-      <h2><span class="pin">Our Story</span> Founded by a 10-year-old dog lover</h2>
-      <p>
-        Swissy Tees is the real deal — a small company owned and run by <strong>Declan</strong>,
-        a 10-year-old entrepreneur from <strong>Evergreen, Colorado</strong>, with a big love
-        for Swiss Mountain Dogs. He runs the whole thing alongside his very own Swissy,
-        <strong>Heinz</strong> — chief inspiration, model, and taste-tester.
+  <!-- MEET THE FOUNDERS -->
+  <section class="founders">
+    <div class="container">
+      <div class="section-label">Meet the Team</div>
+      <h2>Declan &amp; Heinz</h2>
+      <div class="meet">
+        <div class="who declan">
+          <div class="avatar">🧒</div>
+          <h3>Declan</h3>
+          <div class="role">Founder &amp; Boss</div>
+          <p>I'm 10 years old and I live in <strong>Evergreen, Colorado</strong>, surrounded by
+          mountains and trails. I'm a young entrepreneur with big dreams — and Swissy Tees is my
+          company. I started it because I love Swiss Mountain Dogs and I think everyone else
+          should too.</p>
+        </div>
+        <div class="who heinz">
+          <div class="avatar">🐕</div>
+          <h3>Heinz</h3>
+          <div class="role">Chief Good Boy</div>
+          <p>Heinz is my <strong>Greater Swiss Mountain Dog</strong> — a real Swissy! He's big,
+          super soft, and the cuddliest dog you'll ever meet. Yes, he drools a lot. No, we don't
+          care. He's the inspiration behind every single shirt.</p>
+        </div>
+      </div>
+      <p class="story">
+        Swissy Tees is a real company run by a <strong>10-year-old and his dog</strong> from the
+        Colorado mountains. When you wear our shirts, you're cheering on a young founder chasing a
+        big dream — one good tee at a time. 🏔️
       </p>
-      <p>
-        Every design starts in the Colorado mountains with the dogs Declan thinks are the
-        best in the world. When you support Swissy Tees, you're cheering on a young founder
-        chasing a big dream — one good tee at a time.
-      </p>
-      <div class="sig">— Declan &amp; Heinz, Evergreen, CO 🏔️🐕</div>
-    </section>
+    </div>
+  </section>
 
-    <nav class="socials">
-      <a href="https://instagram.com/swissytees" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://tiktok.com/@swissytees" target="_blank" rel="noopener">TikTok</a>
-      <a href="mailto:hello@swissytees.com">Email</a>
-    </nav>
+  <!-- BRAND PROMISE -->
+  <section class="promise">
+    <div class="container">
+      <div class="section-label" style="color:#f4a0a3;">Why Swissy Tees</div>
+      <h2>Made with love<br>(and a little dog hair)</h2>
+      <div class="grid">
+        <div class="item">
+          <div class="ic">🎨</div>
+          <h4>Real, original art</h4>
+          <p>Designs drawn with love — not lazy clip-art. The dogs are the heroes.</p>
+        </div>
+        <div class="item">
+          <div class="ic">🐶</div>
+          <h4>All the Swiss breeds</h4>
+          <p>Bernese, Greater Swiss, Appenzeller &amp; Entlebucher — the whole Alpine family.</p>
+        </div>
+        <div class="item">
+          <div class="ic">✨</div>
+          <h4>Premium &amp; soft</h4>
+          <p>Quality tees that feel great and you'll actually want to keep wearing.</p>
+        </div>
+        <div class="item">
+          <div class="ic">❤️</div>
+          <h4>We give back</h4>
+          <p>A share of every shirt will help Swiss Mountain Dog rescues.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>© 2026 Swissy Tees · Mountain Apparel · Made with love (and a little dog hair)</footer>
-  </div>
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="section-label">Be First</div>
+      <h2>Our first collection is almost here</h2>
+      <p>Drop your email and you'll be the first to know when the shop opens — plus a
+      founding-fan discount as a thank-you.</p>
+      <form id="signup2" novalidate>
+        <input type="email" id="email2" name="email" placeholder="you@email.com" required aria-label="Email address" />
+        <button type="submit">Notify me</button>
+      </form>
+      <div class="success" id="success2">🐾 You're on the list! We'll bark when we launch.</div>
+    </div>
+  </section>
+
+  <nav class="socials">
+    <a href="https://instagram.com/swissytees" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://tiktok.com/@swissytees" target="_blank" rel="noopener">TikTok</a>
+    <a href="mailto:hello@swissytees.com">Email</a>
+  </nav>
+
+  <footer>
+    © 2026 Swissy Tees · Mountain Apparel · Evergreen, Colorado<br>
+    Made with <span class="heart">love</span> by Declan &amp; Heinz 🐾
+  </footer>
 
 <script>
-  // Simple client-side capture. To actually collect emails, set FORM_ENDPOINT
-  // to a Formspree (https://formspree.io) or Mailchimp form URL and uncomment the fetch below.
-  const FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/your-id"
+  // To collect real emails, set FORM_ENDPOINT to a Formspree (https://formspree.io) URL.
+  const FORM_ENDPOINT = "";
 
-  const form = document.getElementById('signup');
-  const success = document.getElementById('success');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const email = document.getElementById('email').value.trim();
-    if (!email || !email.includes('@')) {
-      document.getElementById('email').focus();
-      return;
-    }
-    if (FORM_ENDPOINT) {
-      fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      });
-    }
-    form.style.display = 'none';
-    document.querySelector('.form-note').style.display = 'none';
-    success.style.display = 'block';
-  });
+  function wireForm(formId, successId, emailId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById(emailId).value.trim();
+      if (!email || !email.includes('@')) { document.getElementById(emailId).focus(); return; }
+      if (FORM_ENDPOINT) {
+        fetch(FORM_ENDPOINT, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
+      }
+      form.style.display = 'none';
+      const note = form.parentElement.querySelector('.form-note');
+      if (note) note.style.display = 'none';
+      document.getElementById(successId).style.display = 'block';
+    });
+  }
+  wireForm('signup', 'success', 'email');
+  wireForm('signup2', 'success2', 'email2');
 </script>
 </body>
 </html>
